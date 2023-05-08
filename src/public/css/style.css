@@ -1361,24 +1361,24 @@ header a{
 /* fin reglas generales */
 /* index */
 .palabras .uno{
-    font-size: 175px; 
+    font-size: 120px; 
     left: 120px;
     bottom: 100px;
 }
 .palabras .dos{
-    font-size: 175px;
+    font-size: 120px;
     position: absolute;
     left: 320px;
     bottom: 300px;
 }
 .palabras .tres{
-    font-size: 175px;
+    font-size: 120px;
     color: var(--color-negro);
     right: 60px;
     top: 290px;
 }
 .palabras .cuatro{
-    font-size: 175px;
+    font-size: 120px;
     color: var(--color-negro);
     right: 350px;
     top: 50px;
