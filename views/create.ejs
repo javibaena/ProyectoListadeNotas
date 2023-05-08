@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="resources/css/style.css">
+
+
+
+    
+
+   
+  </head>
+  <body>
+    <div class="marco">
+      <header class="headernotas">
+        <h2>/Nueva  Nota</h2>
+  
+        <div class="linkHeader">
+          <div class="crearnota">
+            <a  href="/create">📝</a>
+          </div>
+          <div class="back">
+            <a  class="atras" href="/listas"> 🔙</a>
+          </div>
+           <div class="salir">
+            <a href="/logout" >🌪</a>
+         
+           </div>
+         
+        
+        </div>
+       
+      </header>
+
+       
+      <div class="creacion">
+        <form action="/save" method="POST">
+            <div  class="mb-4">
+              <label for="nota" >Titulo:</label>
+              <input type="text"  id="titulo" name="titulo" class="i" tabindex="1" placeholder="titulo de la nota">
+            </div>
+            <div class="mb-3">
+                <label for="nota" class="form-label">Nota:</label>
+                <input type="text" class="i" name="nota"  tabindex="2" placeholder="nota">
+            </div>
+            <div class="botonesCreacion">
+              <button  class="boton" type="submit">Guardar</button>
+            <a  class="boton" href="/listas">Cancel</a>
+            </div>
+            
+          </form>
+          <div class="videoCrear">
+                <video class="videoCrear" src="resources/media/crear.mp4" autoplay loop muted></video>
+          </div>
+      </div>
+
+    </div>
+ </body>
+</html>
