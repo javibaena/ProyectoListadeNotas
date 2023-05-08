@@ -1369,19 +1369,19 @@ header a{
     font-size: 120px;
     position: absolute;
     left: 320px;
-    bottom: 300px;
+    bottom: 350px;
 }
 .palabras .tres{
     font-size: 120px;
     color: var(--color-negro);
-    right: 60px;
-    top: 290px;
+    right: 460px;
+    top: 430px;
 }
 .palabras .cuatro{
     font-size: 120px;
     color: var(--color-negro);
     right: 350px;
-    top: 50px;
+    top: 150px;
 }
 /* fin del index */
 /* login */
