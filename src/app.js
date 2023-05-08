@@ -51,7 +51,10 @@ const connection = mysql.createConnection({
 
 // Configuración de la carpeta 'public' como carpeta de archivos estáticos
 app.use(express.static('public'));
-
+/* directorio public */
+app.use("/resources", express.static("public"));
+app.use(express.static("public")); 
+app.use("/resources", express.static(__dirname + "/public"))
 
 
 
