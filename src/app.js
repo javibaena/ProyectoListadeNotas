@@ -8,10 +8,6 @@ const conexion = require("./database/db")
 const bodyParser = require("body-parser");//modulo body-parser
 
 
-
-
-
-
 //settings
 
 app.set("port", process.env.PORT || 3001);
@@ -28,21 +24,7 @@ app.set("views", path.join(__dirname, "views") );
 //importacion Routes
 app.use("/", require("./router"))
 
-/* //conexion base de datos
-const connection = mysql.createConnection({
-    host: "localhost",
-    port: 8889,
-    user:"root",
-    password:"root",
-    database:"crud"
-  });
-  
-  connection.connect((err) => {
-    if (err) throw err;
-    console.log('Conectado a la base de datos MySQL');
-  });
- */
-  // Configuración de la sesión
+// Configuración de la sesión
     app.use(session({
     secret: 'secreto',
     resave: true,
@@ -57,74 +39,71 @@ app.use(express.static("public"));
 app.use("/resources", express.static(__dirname + "/public"))
 
 
-
-
 // Ruta de inicio
 app.get('/', (req, res) => {
     res.render('index');
   });
-
 // Ruta de registro
 app.get('/registro', (req, res) => {
     res.render('registro');
   });
-
-
   // Ruta de registro (POST)
   app.post("/register", async (req, res)=>{
     const user = req.body.user;
     const name = req.body.name;
-    const password = req.body.password;
-    let passwoprdHaash = await bcryptjs.hash(password,8)
+    const pass = req.body.password;
+    let passwordHaash = await bcryptjs.hash(pass,8)
    conexion.query("INSERT INTO users SET ?", 
-    {user:user, name : name, password: passwoprdHaash},
+    {user:user, name : name, pass: passwordHaash},
     async (error, resulultado)=>{
         if(error){
             console.log(error);
         }
+            console.log("el alta fue exitosa")
             res.render('login');
+
            
     })
+    
 })
-
-
 // Ruta de login
 app.get('/login', (req, res) => {
+  
     res.render('login');
   });
+  //Ruta Error
+  app.get("/error",(req, res)=>{
+    res.render("error")
+  })
+
 
   //acceso login
-app.post("/auth", async(req, res)=>{
+ app.post("/auth", async(req, res)=>{
     const  user = req.body.user;
-    const password = req.body.password;
-    let passwoprdHaash = await bcryptjs.hash(password,8);
-    if(user && password){
-   conexion.query("SELECT * FROM users WHERE user,password ?", [user],
+    const pass = req.body.password;
+    let passwordHaash = await bcryptjs.hash(pass,8);
+    if(user && pass){
+   conexion.query("SELECT * FROM users WHERE user = ?", [user],
         async(error, resultado) =>{
-            if(resultado == 0){
-                res.send("usuario yo passwoprd incorrecta");
+            if(resultado.length== 0 || !(await bcryptjs.compare(pass, resultado[0].pass))){
+                res.render("error");
             }
-            res.render("home")
+            res.render("home");
+        
         })
     }
-})
+})  
 
 //Ruta home
 app.get('/home', (req, res) => {
     res.render('home');
   });
-
-//ruta logout
-
 //ruta logout corta la sesion
 app.get("/logout", (req, res)=>{
     req.session.destroy(()=>{
         res.redirect("/")
     })
 })
-
-
-
 
 
 
