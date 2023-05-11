@@ -16,7 +16,7 @@ exports.update = (req,res)=>{
     const id = req.body.id;
     const titulo = req.body.titulo;
     const nota = req.body.nota;
-    conexion.query("UPDATE lista SET ?",[{titulo:titulo, nota:nota}, id] , (error, results)=>{
+    conexion.query("UPDATE lista SET ?",[{id,titulo:titulo, nota:nota}] , (error, results)=>{
         if(error){
             console.log(error);
         }else{
