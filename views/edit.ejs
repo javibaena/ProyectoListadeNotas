@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../resources/css/style.css">
+</head>
+<body>
+  <div class="marco">
+  <header class="headernotas">
+    <h2>/Editar  Nota</h2>
+
+    <div class="linkHeader">
+      <div class="crearnota">
+        <a  href="/create">📝</a>
+      </div>
+      <div class="back">
+        <a  class="atras" href="/listas"> 🔙</a>
+      </div>
+       <div class="salir">
+        <a href="/logout" >🌪</a>
+     
+       </div>
+     
+    
+    </div>
+   
+  </header>
+  <% if (nota) { %>
+    <div class="edicion">
+        <form action="/update" method="POST">
+            <input  id="id"  name="id" value="<%= nota.id %>"  hidden>
+            <div class="mb-5">
+              <label for="nota" >Título:</label>
+              <input class="i"  value="<%= nota.titulo %>" type="text"  id="titulo" name="titulo"   tabindex="1" placeholder="titulo de la nota">
+            </div>
+            <div class="mb-6">
+                <label for="nota">Nota:</label>
+                <input  class="i" type="text"   name="nota"   value="<%= nota.nota %>" tabindex="2" placeholder="nota">
+            </div>
+            <div class="botonesEdit">
+              <button type="submit" class="boton">Guardar</button>
+              <a class="boton"  href="/listas">Cancel</a>
+              
+            </div>
+           
+          </form>
+          <div>
+            <video  class="videoDelete" src="../resources/media/delete.mp4" autoplay loop muted></video>
+          </div>
+          
+    
+    </div>
+<% } %>
+</div>
+</body>
+</html>
+
+
+
+<!-- <!doctype html>
+<html lang="en">
+  <head>
+   
+   
+
+   
+  </head>
+  <body>
+  
+    
+    
+        
+      
+<% if (nota) { %>
+    <div>
+        <form action="/update" method="POST">
+            <input  id="id"  name="id" value="<%= nota.id %>"  hidden>
+            <div class="mb-3">
+              <label for="nota" >Nombre de la nota</label>
+              <input  value="<%= nota.titulo %>" type="text"  id="titulo" name="titulo"   tabindex="1" placeholder="titulo de la nota">
+            </div>
+            <div class="mb-3">
+                <label for="nota">Nota</label>
+                <input type="text"   name="nota"   value="<%= nota.nota %>" tabindex="2" placeholder="nota">
+            </div>
+          
+            <button type="submit" class="boton">Guardar</button>
+            <a class="boton"  href="/listas">Cancel</a>
+          </form>
+    
+    </div>
+<% } %>
+   
+  </body>
+</html> -->
